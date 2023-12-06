@@ -1,0 +1,9 @@
+.*
+!.git
+*.sh
+build
+dist
+wiki
+*.egg-info
+__pycache__
+foo*

@@ -1,0 +1,22 @@
+name: Duploctl Pipe
+image: duplocloud/duploctl-pipe:0.0.1
+description: Use duploctl as a bitbucket pipe. 
+category: Deployment
+repository: https://github.com/duplocloud/duploctl-pipe
+vendor:
+  name: DuploCloud
+  website: https://duplocloud.com/
+maintainer:
+  name: DuploCloud
+  website: https://duplocloud.com/
+tags:
+  - deployment
+  - images
+  - duplocloud
+variables:
+  - name: DUPLO_HOST
+    default: "$DUPLO_HOST"
+  - name: DUPLO_TOKEN
+    default: "$DUPLO_TOKEN"
+  - name: DUPLO_TENANT
+    default: "$DUPLO_TENANT"

@@ -1,0 +1,18 @@
+services:
+
+  duploctl-pipe:
+    image: duplocloud/duploctl-pipe:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+      - "duplocloud/bitbucket-deploy-pipe:latest"
+      x-bake:
+        platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm64/v8
+    environment:
+      DUPLO_HOST: $DUPLO_HOST
+      DUPLO_TOKEN: $DUPLO_TOKEN
+      DUPLO_TENANT: $DUPLO_TENANT

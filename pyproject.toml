@@ -1,0 +1,81 @@
+[project]
+name = "duploctl-pipe"
+description = "A bitbucket pipe wrapper for duploctl."
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.10.0"
+keywords = [
+  "duplocloud",
+  "duplo", 
+  "duploctl", 
+  "duplo-client",
+  "bitbucket",
+  "pipes"
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+authors = [
+{ name = "Kelly", email = "kelly@duplocloud.net" }
+]
+maintainers = [
+{ name = "Kelly", email = "kelly@duplocloud.net" }
+]
+dependencies = [
+  "duplocloud-client>=0.1.9",
+  "bitbucket-pipes-toolkit==3.2.1"
+]
+[project.optional-dependencies]
+build = [
+  "invoke",
+  "setuptools_scm",
+  "build",
+  "twine"
+]
+test = [
+  "pytest",
+  "ruff",
+  "pytest-black",
+  "pytest-isort",
+  "pytest-cov",
+]
+[build-system]
+requires = [
+  "setuptools>=42",
+  "setuptools_scm[toml]>=6.2",
+  "wheel",
+  "build",
+  "twine"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--verbose --cov=src --cov-report term-missing"
+testpaths = [
+  "tests",
+  "integration",
+]
+[tool.setuptools_scm]
+
+[tool.coverage.run]
+omit = [
+  "*_test.py",
+  "foo.py",
+  "src/conftest.py",
+  "**/__*__.py"
+]
+
+[tool.ruff]
+exclude = [
+  "**/*_test.py"
+]
+
+[tool.setuptools.packages.find]
+include = ["pipe"]
+
+[project.scripts]
+duploctl-pipe = "pipe.pipe:main"
+
