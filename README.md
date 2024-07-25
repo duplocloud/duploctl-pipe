@@ -5,20 +5,35 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 ## YAML Definition  
 
 ```yaml
-- pipe: docker://duplocloud/duploctl-pipe:1.0.0
+- pipe: &duploctl docker://duplocloud/duploctl-pipe:1.0.0
+  variables: &duplovars
+    TOKEN: <string>
+    HOST: <string>
+    TENANT: <string>
+    KIND: service
+    NAME: my-app
+    CMD: update_image
+    ARGS: registry.com/my-app:latest
+- pipe: *duploctl
   variables:
-    DUPLO_TOKEN: '<string>'
-    DUPLO_HOST: '<string>'
-    DUPLO_TENANT: '<string>'
+    <<: *duplovars
+    KIND: lambda
+    NAME: my-lambda
+    ARGS: registry.com/my-lambda:latest
+
 ```
 
 ## Variables  
 
 | Variable | Usage |  
 | -------- | ----- |  
-| DUPLO_TOKEN | Auth token for Duplo |  
-| DUPLO_HOST | The domain of your Duplo instance |  
-| DUPLO_TENANT | The tenant where the service is in |  
+| TOKEN | Auth token for Duplo |  
+| HOST | The domain of your Duplo instance |  
+| TENANT | The tenant where the service is in |  
+| KIND | The kind of the service (service, lambda) |
+| NAME | The name of the service |
+| CMD | The command to run on the service |
+| ARGS | The arguments to the command |
 
 ## Prerequisites  
 
