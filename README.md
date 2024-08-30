@@ -5,7 +5,7 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 ## YAML Definition  
 
 ```yaml
-- pipe: &duplo docker://duplocloud/pipe:1.0.0
+- pipe: &duplo docker://duplocloud/pipe:latest
   variables: &duplovars
     TOKEN: <string>
     HOST: <string>
