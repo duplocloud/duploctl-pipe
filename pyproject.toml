@@ -73,8 +73,10 @@ exclude = [
   "**/*_test.py"
 ]
 
-[tool.setuptools.packages.find]
-include = ["pipe"]
+[tool.setuptools]
+include-package-data = false
+packages = ["duploctl_pipe"]
+package-dir={'duploctl_pipe' = 'src'}
 
 [project.scripts]
-duploctl-pipe = "pipe.pipe:main"
+duploctl-pipe = "duploctl_pipe.pipe:main"

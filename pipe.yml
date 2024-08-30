@@ -10,13 +10,17 @@ maintainer:
   name: DuploCloud
   website: https://duplocloud.com/
 tags:
-  - deployment
-  - images
-  - duplocloud
+- deployment
+- images
+- duplocloud
 variables:
-  - name: DUPLO_HOST
-    default: "$DUPLO_HOST"
-  - name: DUPLO_TOKEN
-    default: "$DUPLO_TOKEN"
-  - name: DUPLO_TENANT
-    default: "$DUPLO_TENANT"
+- name: DUPLO_HOST
+  default: "$DUPLO_HOST"
+- name: DUPLO_TOKEN
+  default: "$DUPLO_TOKEN"
+- name: DUPLO_TENANT
+  default: "$DUPLO_TENANT"
+- name: KIND
+  default: "service"
+- name: NAME
+  

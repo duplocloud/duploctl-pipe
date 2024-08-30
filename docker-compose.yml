@@ -7,12 +7,12 @@ services:
       dockerfile: Dockerfile
       tags:
       - *image
-      - duplocloud/pipe:$VERSION
+      - duplocloud/pipe:${VERSION:-latest}
       x-bake:
         platforms:
         - linux/amd64
         - linux/arm64
     environment:
-      DUPLO_HOST: $DUPLO_HOST
-      DUPLO_TOKEN: $DUPLO_TOKEN
-      DUPLO_TENANT: $DUPLO_TENANT
+      HOST: $DUPLO_HOST
+      TOKEN: $DUPLO_TOKEN
+      TENANT: $DUPLO_TENANT

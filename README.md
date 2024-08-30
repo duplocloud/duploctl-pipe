@@ -38,3 +38,8 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 ## Prerequisites  
 
 To make an update to a service you will need a duplo token. 
+
+## References  
+  - [This Repo](https://bitbucket.org/duplocloud/duploctl-pipe/src/main/)
+  - [Bitbucket Pipe Advanced Techniques](https://support.atlassian.com/bitbucket-cloud/docs/advanced-techniques-for-writing-pipes/)
+  - [Bitbucket Pipe Tools](https://bitbucket.org/bitbucketpipelines/bitbucket-pipes-toolkit/src/master/)
