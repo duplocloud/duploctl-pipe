@@ -5,7 +5,7 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 ## YAML Definition  
 
 ```yaml
-- pipe: &duploctl docker://duplocloud/duploctl-pipe:1.0.0
+- pipe: &duplo docker://duplocloud/pipe:1.0.0
   variables: &duplovars
     TOKEN: <string>
     HOST: <string>
@@ -13,8 +13,9 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
     KIND: service
     NAME: my-app
     CMD: update_image
-    ARGS: registry.com/my-app:latest
-- pipe: *duploctl
+    ARGS: registry.com/my-app:${BITBUCKET_TAG}
+    WAIT: 'true' # waits for deploy to finish
+- pipe: *duplo
   variables:
     <<: *duplovars
     KIND: lambda
@@ -34,6 +35,9 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 | NAME | The name of the service |
 | CMD | The command to run on the service |
 | ARGS | The arguments to the command |
+| QUERY | The [JMESPATH](https://jmespath.org/) query to run on the output of the command |
+| OUTPUT | The output of the command, json, yaml, string |
+| WAIT | Tells duploctl to wait until a process has completed before continuing |
 
 ## Prerequisites  
 

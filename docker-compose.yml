@@ -16,3 +16,6 @@ services:
       HOST: $DUPLO_HOST
       TOKEN: $DUPLO_TOKEN
       TENANT: $DUPLO_TENANT
+      KIND: tenant
+      CMD: list
+      QUERY: '[].AccountName'
