@@ -1,5 +1,6 @@
 from bitbucket_pipes_toolkit import Pipe, yaml, get_logger
 from duplocloud.client import DuploClient
+import sys
 
 # some global vars
 REQUESTS_DEFAULT_TIMEOUT = 10
@@ -16,7 +17,8 @@ schema = {
   'ADMIN': {'required': False, 'type': 'string', 'default': 'false'},
   'OUTPUT': {'required': False, 'type': 'string', 'default': 'yaml'},
   'QUERY': {'required': False, 'type': 'string'},
-  'WAIT': {'required': False, 'type': 'string', 'default': 'false'}
+  'WAIT': {'required': False, 'type': 'string', 'default': 'false'},
+  'OUTPUT_FILE': {'required': False, 'type': 'string'}
 }
 
 logger = get_logger()
@@ -41,6 +43,7 @@ class DuploctlPipe(Pipe):
     self.args = self.get_variable("ARGS")
     self.name = self.get_variable("NAME")
     self.wait = True if wait == "true" else False
+    self.output_file = self.get_variable("OUTPUT_FILE")
 
   def run(self):
     super().run()
@@ -54,11 +57,15 @@ class DuploctlPipe(Pipe):
     if self.wait:
       args.append("--wait")
     o = self.duplo(*args)
+    if self.output_file:
+      with open(self.output_file, 'w') as f:
+        f.write(o)
     print(o)
-    
 
 def main():
-  with open('./pipe.yml', 'r') as metadata_file:
+  # get the first argument from the command line 
+  file = sys.argv[1] if len(sys.argv) > 1 else './pipe.yml'
+  with open(file, 'r') as metadata_file:
     metadata = yaml.safe_load(metadata_file.read())
   pipe = DuploctlPipe(pipe_metadata=metadata, schema=schema)
   pipe.run()

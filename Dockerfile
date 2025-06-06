@@ -31,4 +31,4 @@ RUN pip install --no-cache-dir ./dist/*.whl && \
     rm -rf ./dist
 
 # Set the entrypoint command for the container
-ENTRYPOINT ["duploctl-pipe"]
+ENTRYPOINT ["duploctl-pipe", "/app/pipe.yml"]

@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        PY_VERSION: 3.12
       tags:
       - *image
       - duplocloud/pipe:${VERSION:-latest}
@@ -19,3 +21,4 @@ services:
       KIND: tenant
       CMD: list
       QUERY: '[].AccountName'
+      OUTPUT_FILE: ./tenant.yaml

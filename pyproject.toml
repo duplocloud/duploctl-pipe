@@ -24,7 +24,7 @@ maintainers = [
 { name = "Kelly", email = "kelly@duplocloud.net" }
 ]
 dependencies = [
-  "duplocloud-client>=0.2.30",
+  "duplocloud-client>=0.2.50",
   "bitbucket-pipes-toolkit==3.2.1"
 ]
 [project.optional-dependencies]
@@ -32,7 +32,8 @@ build = [
   "invoke",
   "setuptools_scm",
   "build",
-  "twine"
+  "twine",
+  "wheel"
 ]
 test = [
   "pytest",

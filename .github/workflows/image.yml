@@ -37,15 +37,22 @@ jobs:
     steps:
 
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Build and Push Docker Image
       id: build_image
       uses: duplocloud/actions/build-image@main
       with:
-        platforms: linux/amd64 # ,linux/arm64 # makes it take longer
+        type: bake
+        target: duploctl-pipe
         push: ${{ inputs.push }}
         docker-username: ${{ secrets.DOCKER_USERNAME }}
         docker-password: ${{ secrets.DOCKER_PASSWORD }}
-        build-args: >
-          PY_VERSION=3.11
+    
+    - name: Docker Hub Description
+      uses: peter-evans/dockerhub-description@v4
+      if: inputs.push
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: ${{ github.repository }}
