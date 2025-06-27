@@ -14,6 +14,7 @@ schema = {
   'NAME': {'required': False, 'type': 'string'},
   'CMD': {'required': False, 'type': 'string'},
   'ARGS': {'required': False, 'type': 'string', 'default': ''},
+  'FILE': {'required': False, 'type': 'string'},
   'ADMIN': {'required': False, 'type': 'string', 'default': 'false'},
   'OUTPUT': {'required': False, 'type': 'string', 'default': 'yaml'},
   'QUERY': {'required': False, 'type': 'string'},
@@ -40,10 +41,24 @@ class DuploctlPipe(Pipe):
     # these are for building the command
     self.kind = self.get_variable("KIND")
     self.cmd = self.get_variable("CMD")
+    self.file = self.get_variable("FILE")
     self.args = self.get_variable("ARGS")
     self.name = self.get_variable("NAME")
     self.wait = True if wait == "true" else False
     self.output_file = self.get_variable("OUTPUT_FILE")
+
+  def validate_yaml_file(self, file_path):
+    """Validate that the file exists and contains valid YAML"""
+    try:
+      with open(file_path, 'r') as f:
+        yaml.safe_load(f)
+        return True
+    except FileNotFoundError:
+      logger.error(f"File not found: {file_path}")
+      return False
+    except yaml.YAMLError as e:
+      logger.error(f"Invalid YAML in file {file_path}: {str(e)}")
+      return False
 
   def run(self):
     super().run()
@@ -54,6 +69,10 @@ class DuploctlPipe(Pipe):
       args.append(self.name)
     if self.args:
       args.extend(self.args.split())
+    if self.file:
+      if not self.validate_yaml_file(self.file):
+        sys.exit(1)
+      args.append(self.file)
     if self.wait:
       args.append("--wait")
     o = self.duplo(*args)

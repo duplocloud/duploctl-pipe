@@ -22,5 +22,6 @@ variables:
   default: "$DUPLO_TENANT"
 - name: KIND
   default: "service"
+- name: FILE
 - name: NAME
 - name: OUTPUT_FILE
