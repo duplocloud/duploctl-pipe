@@ -9,7 +9,9 @@ services:
         PY_VERSION: 3.12
       tags:
       - *image
-      - duplocloud/pipe:${VERSION:-latest}
+      - duplocloud/pipe:${GIT_SHA:-latest}
+      - duplocloud/pipe:${GIT_REF:-latest}
+      - duplocloud/pipe:${GIT_TAG:-latest}
       x-bake:
         platforms:
         - linux/amd64
