@@ -3,5 +3,5 @@
 ## Get Started  
 
 ```bash
-pip install --editable .[build]
+pip install --editable .[build,test]
 ```
