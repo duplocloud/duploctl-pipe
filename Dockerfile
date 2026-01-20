@@ -9,6 +9,9 @@ WORKDIR /app
 # Copy the source code, pyproject.toml, .git file to the container
 COPY . .
 
+# only for when building duploctl from a branch
+# RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
 # Install build dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir .[build]
@@ -21,6 +24,9 @@ FROM python:$PY_VERSION-slim
 
 # Set the working directory in the container
 WORKDIR /app
+
+# only for when building duploctl from a branch
+# RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 # Copy the built package from the previous stage
 COPY --from=builder /app/dist ./dist/

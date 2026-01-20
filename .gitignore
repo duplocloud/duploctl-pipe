@@ -10,3 +10,4 @@ __pycache__
 .mypy_cache
 config/
 test-results.xml
+.vscode/settings.json

@@ -24,7 +24,7 @@ maintainers = [
 { name = "Kelly", email = "kelly@duplocloud.net" }
 ]
 dependencies = [
-  "duplocloud-client>=0.3.0",
+  "duplocloud-client>=0.3.8",
   "bitbucket-pipes-toolkit==3.2.1"
 ]
 [project.optional-dependencies]
