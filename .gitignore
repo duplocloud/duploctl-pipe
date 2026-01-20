@@ -1,5 +1,7 @@
 .direnv
+.venv
 .envrc
+.env
 build
 dist
 *.egg-info
@@ -10,4 +12,6 @@ __pycache__
 .mypy_cache
 config/
 test-results.xml
+!.vscode/
 .vscode/settings.json
+.qodo

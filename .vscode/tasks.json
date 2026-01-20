@@ -1,0 +1,57 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "process",
+      "label": "Pip Install",
+      "detail": "Install build and test dependencies",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "cloud-download"
+      },
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pip", "install", "--editable", ".[build,test]"],
+      "problemMatcher": []
+    },
+    {
+      "type": "process",
+      "label": "Ruff Lint",
+      "detail": "Lint check on the src dir with Ruff",
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "inspect"
+      },
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "ruff", "check", "./src"],
+      "problemMatcher": []
+    },
+    {
+      "type": "process",
+      "label": "Unit Test",
+      "detail": "Run the unit tests with pytest",
+      "group": "test",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "beaker"
+      },
+      "command": "${command:python.interpreterPath}",
+      "args": ["-m", "pytest", "src", "--junit-xml=test-results.xml"],
+      "problemMatcher": []
+    },
+    {
+      "label": "CI",
+      "detail": "Run install, lint, and test in sequence",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Pip Install", "Ruff Lint", "Unit Test"],
+      "problemMatcher": []
+    }
+  ]
+}
