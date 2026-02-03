@@ -37,12 +37,12 @@ class DuploctlPipe(Pipe):
     self.duplo.admin = True if isadmin == "true" else False
     self.duplo.output = self.get_variable("OUTPUT")
     self.duplo.query = self.get_variable("QUERY")
+    self.duplo.wait = True if wait == "true" else False
     # these are for building the command
     self.kind = self.get_variable("KIND")
     self.cmd = self.get_variable("CMD")
     self.args = self.get_variable("ARGS")
     self.name = self.get_variable("NAME")
-    self.wait = True if wait == "true" else False
     self.output_file = self.get_variable("OUTPUT_FILE")
 
   def run(self):
@@ -54,8 +54,6 @@ class DuploctlPipe(Pipe):
       args.append(self.name)
     if self.args:
       args.extend(self.args.split())
-    if self.wait:
-      args.append("--wait")
     o = self.duplo(*args)
     if self.output_file:
       with open(self.output_file, 'w') as f:
