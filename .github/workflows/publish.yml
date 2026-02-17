@@ -10,4 +10,6 @@ jobs:
   image:
     name: Publish
     uses: ./.github/workflows/image.yml
-    secrets: inherit
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
