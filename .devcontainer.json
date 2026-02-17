@@ -3,7 +3,7 @@
 {
 	"name": "Duploctl-Pipe Dev",
 
-	"image": "mcr.microsoft.com/devcontainers/python:3.13",
+	"image": "mcr.microsoft.com/devcontainers/python:3-3.13",
 
 	// Environment variables for the container
 	"containerEnv": {
