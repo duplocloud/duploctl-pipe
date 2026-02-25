@@ -43,8 +43,8 @@ jobs:
     outputs:
       image: ${{ steps.build_image.outputs.uri }}
     environment:
-      name: dockerhub
-      url: https://hub.docker.com/r/duplocloud/pipe
+      name: ${{ inputs.push && 'dockerhub' || '' }}
+      url: ${{ inputs.push && 'https://hub.docker.com/r/duplocloud/pipe' || '' }}
     steps:
 
     - name: Checkout code
