@@ -73,11 +73,20 @@ jobs:
       tag: ${{ inputs.push && needs.version.outputs.tag || '' }}
       push: ${{ inputs.push }}
 
+  package:
+    name: Package
+    needs: version
+    uses: ./.github/workflows/package.yml
+    secrets: inherit
+    with:
+      tag: ${{ inputs.push && needs.version.outputs.tag || '' }}
+
   release:
     name: Release
     needs:
     - version
     - image
+    - package
     if: inputs.push
     runs-on: ubuntu-latest
     steps:
@@ -100,6 +109,12 @@ jobs:
         echo "image=duplocloud/pipe:${TAG}" >> "$GITHUB_OUTPUT"
         echo "badge=${BADGE}" >> "$GITHUB_OUTPUT"
 
+    - name: Download Package Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ needs.package.outputs.package }}
+        path: dist
+
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
@@ -107,6 +122,7 @@ jobs:
         name: ${{ needs.version.outputs.tag }}
         tag_name: ${{ needs.version.outputs.tag }}
         prerelease: ${{ contains(needs.version.outputs.tag, '-') }}
+        files: dist/*.tar.gz
         body: |
           [![Publish](${{ github.server_url }}/${{ github.repository }}/actions/workflows/publish.yml/badge.svg)](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) ${{ steps.registry.outputs.badge }}
 
