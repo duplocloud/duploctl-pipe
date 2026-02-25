@@ -1,17 +1,7 @@
 name: 🧲 Publish Image
 
 on:
-  workflow_dispatch:
-    inputs:
-      push:
-        description: Push the image to the registry
-        required: true
-        default: false
-        type: boolean
-      tag:
-        description: The git tag to build on
-        required: false
-        type: string
+  workflow_dispatch: {}
   workflow_call:
     inputs:
       push:
