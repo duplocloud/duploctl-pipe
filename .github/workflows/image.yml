@@ -1,20 +1,28 @@
 name: Publish Image
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
     inputs:
       push:
         description: Push the image to the registry
         required: true
         default: false
         type: boolean
-  workflow_call: 
+      tag:
+        description: The git tag to build on
+        required: false
+        type: string
+  workflow_call:
     inputs:
       push:
         description: Push the image to the registry
         required: false
         default: true
         type: boolean
+      tag:
+        description: The git tag to build on
+        required: false
+        type: string
     outputs:
       image:
         description: The URI of the image
@@ -41,6 +49,8 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v6
+      with:
+        ref: ${{ inputs.tag }}
 
     - name: Build and Push Docker Image
       id: build_image
