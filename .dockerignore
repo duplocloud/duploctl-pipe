@@ -7,3 +7,5 @@ wiki
 *.egg-info
 __pycache__
 foo*
+tests/
+stuff/
