@@ -34,12 +34,12 @@ jobs:
     # stop the build if there are Python syntax errors or undefined names
     # ruff --format=github --select=E9,F63,F7,F82 --target-version=py37 .
     - name: Lint with ruff
-      run: ruff check ./src
+      run: ruff check ./duplocloud
     
     # run the tests
     - name: Test with pytest
       run: |
-        pytest src --junit-xml=test-results.xml
+        pytest tests --junit-xml=test-results.xml
 
     - name: Surface failing tests
       if: always()

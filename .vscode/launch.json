@@ -16,7 +16,7 @@
       "name": "Duploctl Pipe",
       "type": "debugpy",
       "request": "launch",
-      "program": "src/pipe.py",
+      "program": "duplocloud/bitbucket/pipe.py",
       "console": "integratedTerminal",
       "consoleName": "Duploctl Pipe",
       "justMyCode": true,

@@ -1,6 +1,6 @@
 name: Duploctl Pipe
 image: duplocloud/duploctl-pipe:0.0.1
-description: Use duploctl as a bitbucket pipe. 
+description: Use duploctl as a bitbucket pipe.
 category: Deployment
 repository: https://github.com/duplocloud/duploctl-pipe
 vendor:
@@ -15,12 +15,46 @@ tags:
 - duplocloud
 variables:
 - name: DUPLO_HOST
+  description: "The DuploCloud host URL."
+  required: true
   default: "$DUPLO_HOST"
 - name: DUPLO_TOKEN
+  description: "The DuploCloud API token."
+  required: true
   default: "$DUPLO_TOKEN"
 - name: DUPLO_TENANT
+  description: "The DuploCloud tenant name."
+  required: true
   default: "$DUPLO_TENANT"
 - name: KIND
+  description: "The kind of resource to manage."
+  required: true
   default: "service"
+- name: CMD
+  description: "The command to run on the resource."
+  required: false
 - name: NAME
+  description: "The name of the resource."
+  required: false
+- name: ARGS
+  description: "Additional arguments to pass to the command."
+  required: false
+  default: ""
+- name: ADMIN
+  description: "Run the command as an admin."
+  required: false
+  default: "false"
+- name: OUTPUT
+  description: "The output format (yaml, json)."
+  required: false
+  default: "yaml"
+- name: QUERY
+  description: "A JMESPath query to filter the output."
+  required: false
+- name: WAIT
+  description: "Wait for the operation to complete."
+  required: false
+  default: "false"
 - name: OUTPUT_FILE
+  description: "Write the output to a file."
+  required: false

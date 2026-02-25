@@ -30,7 +30,7 @@
         "id": "inspect"
       },
       "command": "${command:python.interpreterPath}",
-      "args": ["-m", "ruff", "check", "./src"],
+      "args": ["-m", "ruff", "check", "./duplocloud"],
       "problemMatcher": []
     },
     {
@@ -43,7 +43,7 @@
         "id": "beaker"
       },
       "command": "${command:python.interpreterPath}",
-      "args": ["-m", "pytest", "src", "--junit-xml=test-results.xml"],
+      "args": ["-m", "pytest", "tests", "--junit-xml=test-results.xml"],
       "problemMatcher": []
     },
     {
