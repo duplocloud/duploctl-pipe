@@ -4,6 +4,8 @@ Note: version releases in the 0.x.y range may introduce breaking changes.
 
 ## [Unreleased]
 
+## [0.0.7] - 2026-02-25
+
 ### Added 
 
 - tests to ensure quality
