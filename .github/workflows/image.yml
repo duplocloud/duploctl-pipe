@@ -20,10 +20,10 @@ on:
     secrets:
       DOCKER_USERNAME:
         description: Docker username
-        required: true
+        required: false
       DOCKER_PASSWORD:
         description: Docker password
-        required: true
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
