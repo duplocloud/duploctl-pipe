@@ -68,10 +68,13 @@ jobs:
     name: Image
     needs: version
     uses: ./.github/workflows/image.yml
-    secrets: inherit
     with:
       tag: ${{ inputs.push && needs.version.outputs.tag || '' }}
       push: ${{ inputs.push }}
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME || '' }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD || '' }}
+
 
   package:
     name: Package
