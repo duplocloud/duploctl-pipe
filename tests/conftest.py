@@ -20,9 +20,9 @@ def pipe_schema(pipe_metadata):
 # Minimal env dict covering every schema key.
 # Passed as env= to Pipe.__init__ so os.environ is never touched.
 BASE_ENV = {
-    "DUPLO_HOST": "https://test.duplocloud.net",
-    "DUPLO_TOKEN": "test-token",
-    "DUPLO_TENANT": "test-tenant",
+    "HOST": "https://test.duplocloud.net",
+    "TOKEN": "test-token",
+    "TENANT": "test-tenant",
     "KIND": "service",
     "CMD": "",
     "NAME": "",

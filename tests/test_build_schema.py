@@ -61,7 +61,7 @@ class TestSchemaFromPipeYml:
     """Verify the schema derived from the real pipe.yml has the right shape."""
 
     def test_required_vars_are_marked_required(self, pipe_schema):
-        for key in ("DUPLO_HOST", "DUPLO_TOKEN", "DUPLO_TENANT", "KIND"):
+        for key in ("HOST", "TOKEN", "TENANT", "KIND"):
             assert pipe_schema[key]["required"] is True, f"{key} should be required"
 
     def test_optional_vars_are_not_required(self, pipe_schema):
