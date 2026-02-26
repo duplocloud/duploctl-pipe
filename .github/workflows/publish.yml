@@ -21,8 +21,13 @@ on:
 
 jobs:
 
+  test:
+    name: Test
+    uses: ./.github/workflows/test.yml
+
   version:
     name: Version
+    needs: test
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.bump.outputs.tag }}

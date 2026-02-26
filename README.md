@@ -26,24 +26,27 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 
 ## Variables  
 
-| Variable | Usage |  
-| -------- | ----- |  
-| TOKEN | Auth token for Duplo |  
-| HOST | The domain of your Duplo instance |  
-| TENANT | The tenant where the service is in |  
+| Variable | Usage |
+| -------- | ----- |
+| TOKEN | Auth token for Duplo |
+| HOST | The domain of your Duplo instance |
+| TENANT | The tenant where the service is in |
 | KIND | The kind of the service (service, lambda) |
 | NAME | The name of the service |
 | CMD | The command to run on the service |
-| ARGS | The arguments to the command |
+| ARGS | Additional arguments to pass to the command |
+| ADMIN | Run the command as an admin |
 | QUERY | The [JMESPATH](https://jmespath.org/) query to run on the output of the command |
-| OUTPUT | The output of the command, json, yaml, string |
+| OUTPUT | The output format (yaml, json) |
 | WAIT | Tells duploctl to wait until a process has completed before continuing |
+| OUTPUT_FILE | Write the output to a file |
 
 ## Prerequisites  
 
 To make an update to a service you will need a duplo token. 
 
 ## References  
-  - [This Repo](https://bitbucket.org/duplocloud/duploctl-pipe/src/main/)
+  - [This Repo (Bitbucket)](https://bitbucket.org/duplocloud/duploctl-pipe/src/main/)
+  - [This Repo (GitHub)](https://github.com/duplocloud/duploctl-pipe)
   - [Bitbucket Pipe Advanced Techniques](https://support.atlassian.com/bitbucket-cloud/docs/advanced-techniques-for-writing-pipes/)
   - [Bitbucket Pipe Tools](https://bitbucket.org/bitbucketpipelines/bitbucket-pipes-toolkit/src/master/)

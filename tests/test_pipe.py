@@ -191,7 +191,7 @@ class TestMain:
                 patch("sys.argv", ["pipe", str(meta_path)]):
             main()
 
-        for key in ("DUPLO_HOST", "DUPLO_TOKEN", "DUPLO_TENANT", "KIND", "CMD", "OUTPUT"):
+        for key in ("HOST", "TOKEN", "TENANT", "KIND", "CMD", "OUTPUT"):
             assert key in captured["schema"], f"{key} missing from schema passed to pipe"
 
     def test_main_defaults_to_pipe_yml_path(self):
