@@ -1,0 +1,16 @@
+name: 🐤 Canary Image
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  canary:
+    name: Canary
+    uses: ./.github/workflows/image.yml
+    with:
+      push: true
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

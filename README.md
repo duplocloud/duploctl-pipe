@@ -50,3 +50,17 @@ To make an update to a service you will need a duplo token.
   - [This Repo (GitHub)](https://github.com/duplocloud/duploctl-pipe)
   - [Bitbucket Pipe Advanced Techniques](https://support.atlassian.com/bitbucket-cloud/docs/advanced-techniques-for-writing-pipes/)
   - [Bitbucket Pipe Tools](https://bitbucket.org/bitbucketpipelines/bitbucket-pipes-toolkit/src/master/)
+
+### GitHub Actions
+  - [actions/checkout](https://github.com/actions/checkout)
+  - [actions/setup-python](https://github.com/actions/setup-python)
+  - [actions/upload-artifact](https://github.com/actions/upload-artifact)
+  - [actions/download-artifact](https://github.com/actions/download-artifact)
+  - [actions/create-github-app-token](https://github.com/actions/create-github-app-token)
+  - [softprops/action-gh-release](https://github.com/softprops/action-gh-release)
+  - [peter-evans/dockerhub-description](https://github.com/peter-evans/dockerhub-description)
+  - [kentaro-m/auto-assign-action](https://github.com/kentaro-m/auto-assign-action)
+  - [tarides/changelog-check-action](https://github.com/tarides/changelog-check-action)
+  - [pmeier/pytest-results-action](https://github.com/pmeier/pytest-results-action)
+  - [duplocloud/actions](https://github.com/duplocloud/actions)
+  - [duplocloud/version-bump](https://github.com/duplocloud/version-bump)
