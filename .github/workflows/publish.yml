@@ -139,9 +139,9 @@ jobs:
           script:
             - pipe: docker://duplocloud/pipe:${{ needs.version.outputs.tag }}
               variables:
-                DUPLO_HOST: "<your-duplo-host>"
-                DUPLO_TOKEN: "<your-duplo-token>"
-                DUPLO_TENANT: "<your-tenant>"
+                HOST: "<your-duplo-host>"
+                TOKEN: "<your-duplo-token>"
+                TENANT: "<your-tenant>"
           ```
 
           ## Docker Image
