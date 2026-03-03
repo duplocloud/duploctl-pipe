@@ -32,4 +32,5 @@ BASE_ENV = {
     "QUERY": "",
     "WAIT": "false",
     "OUTPUT_FILE": "",
+    "LOG_LEVEL": "WARN",
 }
