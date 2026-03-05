@@ -70,3 +70,8 @@ variables:
 - name: OUTPUT_FILE
   description: Write the output to a file.
   required: false
+
+- name: LOG_LEVEL
+  description: The log level for the duploctl client (DEBUG, INFO, WARN, ERROR).
+  required: false
+  default: WARN

@@ -45,6 +45,7 @@ class TestDuploctlPipeInit:
             host="https://test.duplocloud.net",
             token="test-token",
             tenant="test-tenant",
+            loglevel="WARN",
         )
 
     def test_kind_is_read_from_env(self, pipe_schema):

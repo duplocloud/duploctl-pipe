@@ -40,6 +40,7 @@ A bitbucket wrapper for the [duploctl](https://github.com/duplocloud/duploctl). 
 | OUTPUT | The output format (yaml, json) |
 | WAIT | Tells duploctl to wait until a process has completed before continuing |
 | OUTPUT_FILE | Write the output to a file |
+| LOG_LEVEL | Log verbosity for the duploctl client (DEBUG, INFO, WARN, ERROR). Default: WARN |
 
 ## Prerequisites  
 

@@ -11,7 +11,8 @@ class DuploctlPipe(Pipe):
         self.duplo = DuploClient(
             host=self.get_variable("HOST"),
             token=self.get_variable("TOKEN"),
-            tenant=self.get_variable("TENANT"))
+            tenant=self.get_variable("TENANT"),
+            loglevel=self.get_variable("LOG_LEVEL"))
         isadmin = self.get_variable("ADMIN")
         wait = self.get_variable("WAIT")
         # set global duplo vars
