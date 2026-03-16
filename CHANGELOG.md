@@ -11,6 +11,7 @@ Note: version releases in the 0.x.y range may introduce breaking changes.
 ### Fixed
 
 - the variables were wrong and broke existing pipelines, these are fixed again
+- updated import from deprecated `duplocloud.client.DuploClient` to `duplocloud.controller.DuploCtl`
 
 ## [0.0.9] - 2026-02-26
 

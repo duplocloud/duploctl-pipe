@@ -18,23 +18,23 @@ def load_metadata():
 
 
 def make_pipe(schema, env_overrides=None, mock_duplo=None):
-    """Instantiate DuploctlPipe with a controlled env and mocked DuploClient.
+    """Instantiate DuploctlPipe with a controlled env and mocked DuploCtl.
 
     Passes env= directly to Pipe.__init__ so os.environ is never touched.
     """
     env = {**BASE_ENV, **(env_overrides or {})}
     if mock_duplo is None:
         mock_duplo = MagicMock()
-    with patch("duploctl_pipe.pipe.DuploClient", return_value=mock_duplo):
+    with patch("duploctl_pipe.pipe.DuploCtl", return_value=mock_duplo):
         pipe = DuploctlPipe(pipe_metadata=load_metadata(), schema=schema, env=env)
     return pipe, mock_duplo
 
 
 class TestDuploctlPipeInit:
-    """DuploctlPipe.__init__ wires up DuploClient and reads variables."""
+    """DuploctlPipe.__init__ wires up DuploCtl and reads variables."""
 
     def test_duplo_client_receives_host_token_tenant(self, pipe_schema):
-        with patch("duploctl_pipe.pipe.DuploClient") as MockClient:
+        with patch("duploctl_pipe.pipe.DuploCtl") as MockClient:
             MockClient.return_value = MagicMock()
             DuploctlPipe(
                 pipe_metadata=load_metadata(),
@@ -82,7 +82,7 @@ class TestDuploctlPipeInit:
 
 
 class TestDuploctlPipeRun:
-    """DuploctlPipe.run() assembles the right args and calls DuploClient.__call__."""
+    """DuploctlPipe.run() assembles the right args and calls DuploCtl.__call__."""
 
     def _run(self, pipe, mock_duplo, return_value="result"):
         """Run the pipe with Pipe.run and print stubbed out."""
@@ -149,7 +149,7 @@ class TestDuploctlPipeRun:
         mock_open_call.assert_not_called()
 
     def test_run_returns_config_when_duplo_called_with_no_resource(self, pipe_schema):
-        """DuploClient.__call__ with no resource returns the client config dict.
+        """DuploCtl.__call__ with no resource returns the client config dict.
 
         The pipe always passes at least KIND, so we simulate this by having the
         mock return a config-shaped string — verifying run() prints whatever
@@ -172,7 +172,7 @@ class TestMain:
 
         with patch("duploctl_pipe.pipe.DuploctlPipe", return_value=mock_pipe), \
                 patch("sys.argv", ["pipe", str(meta_path)]), \
-                patch("duploctl_pipe.pipe.DuploClient", return_value=MagicMock()):
+                patch("duploctl_pipe.pipe.DuploCtl", return_value=MagicMock()):
             main()
 
         mock_pipe.run.assert_called_once()
