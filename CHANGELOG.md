@@ -4,6 +4,8 @@ Note: version releases in the 0.x.y range may introduce breaking changes.
 
 ## [Unreleased]
 
+## [0.0.10] - 2026-03-17
+
 ### Added
 
 - `LOG_LEVEL` variable to control duploctl client log verbosity (DEBUG, INFO, WARN, ERROR), defaulting to WARN
