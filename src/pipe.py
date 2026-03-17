@@ -1,5 +1,5 @@
 from bitbucket_pipes_toolkit import Pipe, yaml, get_logger
-from duplocloud.client import DuploClient
+from duplocloud.controller import DuploCtl
 import sys
 
 logger = get_logger()
@@ -8,7 +8,7 @@ class DuploctlPipe(Pipe):
     """Duplo Deploy Pipe"""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.duplo = DuploClient(
+        self.duplo = DuploCtl(
             host=self.get_variable("HOST"),
             token=self.get_variable("TOKEN"),
             tenant=self.get_variable("TENANT"),
